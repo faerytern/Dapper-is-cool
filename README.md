@@ -3,7 +3,7 @@ From https://www.learndapper.com/
 
 What does Dapper actually do? 
 Here is some standard ADO.NET code for retrieving data from a database and materialising it as a collection of Product objects:
-
+```c#
     var sql = "select * from products";
     var products = new List<Product>();
     using (var connection = new SqlConnection(connString))
@@ -31,8 +31,9 @@ Here is some standard ADO.NET code for retrieving data from a database and mater
             }
         }
     }
+```
 At its most basic level, Dapper replaces the highlighted block of assignment code in the example above with the following:
-
+```c#
     products = connection.Query<Product>(sql);
-    
+``` 
 Dapper also takes care of creating the command and opening the connection if needed. If all you ever use Dapper for is for managing basic assignment like this, it will save you hours of time. In fact, Dapper is capable of doing quite a bit more.
